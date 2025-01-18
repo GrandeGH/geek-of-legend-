@@ -58,7 +58,16 @@ let nomArcher = prompt("Entrer un nom pour l'archère")
 let PVrepartir = 150
 let PAttakrepartir = 120
 
-while (condition) {
-    
+while (PVrepartir > 0) {
+    guerrier.pointDeVie = parseInt(prompt("Repartir les PV (points de vie) au guerrier, " + PVrepartir + " restant"))
+    mage.pointDeVie = parseInt(prompt("Raprtir les PV (points de vie) au mage," + PVrepartir + " restant"))
+    archer.pointDeVie = parseInt(prompt("Raprtir les PV (points de vie) au archer," + PVrepartir + " restant"))
 }
+while (PAttakrepartir > 0) {
+    guerrier.pointDeVie = parseInt(prompt("Repartir les PA (points d'attaque) au guerrier, " + PVrepartir + " restant"))
+    mage.pointDeVie = parseInt(prompt("Raprtir les PA (points d'attaque) au mage," + PVrepartir + " restant"))
+    archer.pointDeVie = parseInt(prompt("Raprtir les PA (points d'attaque) au archer," + PVrepartir + " restant"))
+}
+
+
 let repartirStats = prompt()
