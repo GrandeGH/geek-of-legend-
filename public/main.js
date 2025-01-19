@@ -49,9 +49,9 @@ const archer = new Archer ("Serah", 0, 0,["Attaque", "Defense"], "Archer", 6)
 
 // créer un nom
 
-let nomGuerrier = prompt("Entrer un nom pour le guerrier")
-let nomMage = prompt("Entrer un nom pour la mage")
-let nomArcher = prompt("Entrer un nom pour l'archère")
+// let nomGuerrier = prompt("Entrer un nom pour le guerrier")
+// let nomMage = prompt("Entrer un nom pour la mage")
+// let nomArcher = prompt("Entrer un nom pour l'archère")
 
 // repartir les points de vies et d'attaque
 
@@ -60,14 +60,35 @@ let PAttakrepartir = 120
 
 while (PVrepartir > 0) {
     guerrier.pointDeVie = parseInt(prompt("Repartir les PV (points de vie) au guerrier, " + PVrepartir + " restant"))
-    mage.pointDeVie = parseInt(prompt("Raprtir les PV (points de vie) au mage," + PVrepartir + " restant"))
-    archer.pointDeVie = parseInt(prompt("Raprtir les PV (points de vie) au archer," + PVrepartir + " restant"))
-}
-while (PAttakrepartir > 0) {
-    guerrier.pointDeVie = parseInt(prompt("Repartir les PA (points d'attaque) au guerrier, " + PVrepartir + " restant"))
-    mage.pointDeVie = parseInt(prompt("Raprtir les PA (points d'attaque) au mage," + PVrepartir + " restant"))
-    archer.pointDeVie = parseInt(prompt("Raprtir les PA (points d'attaque) au archer," + PVrepartir + " restant"))
+    PVrepartir -= guerrier.pointDeVie
+
+    mage.pointDeVie = parseInt(prompt("Repartir les PV (points de vie) au mage, " + PVrepartir + " restant"))
+    PVrepartir -= mage.pointDeVie
+
+    archer.pointDeVie = parseInt(prompt("Repartir les PV (points de vie) au archer, " + PVrepartir + " restant"))
+    PVrepartir -= archer.pointDeVie
+
+    console.log(`Il reste ${PVrepartir} points de PV a repartir`)
+
+    if (PVrepartir === 0 ) {
+        alert("Tous les points ont été repartis !");
+        break;
+    }
+    if (PVrepartir > 0) {
+        alert("Il manque des points à repartir")
+        PVrepartir += guerrier.pointDeVie + mage.pointDeVie + archer.pointDeVie // rétablir les points
+    }
+    if (PVrepartir < 0) {
+        alert("Trop de points dépenser, ressayez"); // si les points sont dépasser au dela de 150
+        PVrepartir += guerrier.pointDeVie + mage.pointDeVie + archer.pointDeVie // rétablir les points
+    }
 }
 
+// while (PAttakrepartir > 0) {
+//     guerrier.pointDeVie = parseInt(prompt("Repartir les PA (points d'attaque) au guerrier, " + PVrepartir + " restant"))
+//     mage.pointDeVie = parseInt(prompt("Raprtir les PA (points d'attaque) au mage," + PVrepartir + " restant"))
+//     archer.pointDeVie = parseInt(prompt("Raprtir les PA (points d'attaque) au archer," + PVrepartir + " restant"))
+// }
 
-let repartirStats = prompt()
+
+// let repartirStats = prompt()
