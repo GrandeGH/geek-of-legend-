@@ -49,46 +49,118 @@ const archer = new Archer ("Serah", 0, 0,["Attaque", "Defense"], "Archer", 6)
 
 // créer un nom
 
-// let nomGuerrier = prompt("Entrer un nom pour le guerrier")
-// let nomMage = prompt("Entrer un nom pour la mage")
-// let nomArcher = prompt("Entrer un nom pour l'archère")
+let nomGuerrier = prompt("Entrer un nom pour le guerrier")
+let nomMage = prompt("Entrer un nom pour la mage")
+let nomArcher = prompt("Entrer un nom pour l'archer")
 
 // repartir les points de vies et d'attaque
 
 let PVrepartir = 150
 let PAttakrepartir = 120
 
-while (PVrepartir > 0) {
-    guerrier.pointDeVie = parseInt(prompt("Repartir les PV (points de vie) au guerrier, " + PVrepartir + " restant"))
+while (true) {
+    // ---attribuer au guerrier
+    guerrier.pointDeVie = parseInt(prompt(`Repartir les PV (points de vie) à ${nomGuerrier}, ${PVrepartir} restant`))
     PVrepartir -= guerrier.pointDeVie
+    // vérification
+    if (guerrier.pointDeVie < 1 || PVrepartir < 0) {
+        alert("Le guerrier doit au moins avoir 1 points de vie ou les points de disponiblité ont dépassés.")
+        PVrepartir += guerrier.pointDeVie
+        continue // recommencer le boucle
 
-    mage.pointDeVie = parseInt(prompt("Repartir les PV (points de vie) au mage, " + PVrepartir + " restant"))
+    // if (guerrier.pointDeVie >= 1)
+    //     console.log(`${guerrier.pointDeVie} du guerrier`)
+    //     break
+    // }
+    // if (guerrier.pointDeVie ) {
+    //     alert("Il manque des points à repartir au Guerrier. Reessayez")
+    //     PVrepartir += guerrier.pointDeVie
+    }
+
+    // ---attribuer au Mage
+    mage.pointDeVie = parseInt(prompt(`Repartir les PV (points de vie) à ${nomMage}, ${PVrepartir} restant`))
     PVrepartir -= mage.pointDeVie
+    // vérification
+    if (mage.pointDeVie <= 0 || PVrepartir < 0) {
+        alert("Le mage doit au moins avoir 1 points de vie ou les points de disponiblité ont dépassés.")
+        PVrepartir += guerrier.pointDeVie + mage.pointDeVie
+        continue
+    }
 
-    archer.pointDeVie = parseInt(prompt("Repartir les PV (points de vie) au archer, " + PVrepartir + " restant"))
+    // ---attribuer au Archer
+    archer.pointDeVie = parseInt(prompt(`Repartir les PV (points de vie) à ${nomArcher}, ${PVrepartir} restant`))
     PVrepartir -= archer.pointDeVie
-
-    console.log(`Il reste ${PVrepartir} points de PV a repartir`)
-
-    if (PVrepartir === 0 ) {
-        alert("Tous les points ont été repartis !");
-        break;
+    // vérification
+    if (archer.pointDeVie <= 0 || PVrepartir < 0) {
+        alert("L'archer doit au moins avoir 1 points de vie ou les points de disponiblité ont dépassés.")
+        PVrepartir += guerrier.pointDeVie + mage.pointDeVie + archer.pointDeVie
+        continue
     }
-    if (PVrepartir > 0) {
-        alert("Il manque des points à repartir")
-        PVrepartir += guerrier.pointDeVie + mage.pointDeVie + archer.pointDeVie // rétablir les points
+
+
+
+    // si tous les points ont été repartis
+    if (PVrepartir === 0) {
+        alert("Tous les points ont été repartis !")
+        break
     }
-    if (PVrepartir < 0) {
-        alert("Trop de points dépenser, ressayez"); // si les points sont dépasser au dela de 150
-        PVrepartir += guerrier.pointDeVie + mage.pointDeVie + archer.pointDeVie // rétablir les points
+    else {
+        alert("Il manque des points à repartir.")
+        PVrepartir += guerrier.pointDeVie + mage.pointDeVie + archer.pointDeVie
     }
 }
 
-// while (PAttakrepartir > 0) {
-//     guerrier.pointDeVie = parseInt(prompt("Repartir les PA (points d'attaque) au guerrier, " + PVrepartir + " restant"))
-//     mage.pointDeVie = parseInt(prompt("Raprtir les PA (points d'attaque) au mage," + PVrepartir + " restant"))
-//     archer.pointDeVie = parseInt(prompt("Raprtir les PA (points d'attaque) au archer," + PVrepartir + " restant"))
-// }
+// -------------point d'attaque
+while (true) {
+    // ---attribuer au guerrier
+    guerrier.pointAttaque = parseInt(prompt(`Repartir les points d'attaque à ${nomGuerrier}, ${PAttakrepartir} restant`))
+    PAttakrepartir -= guerrier.pointAttaque
+    // vérification
+    if (guerrier.pointAttaque < 1 || PAttakrepartir < 0) {
+        alert("Le guerrier doit au moins avoir 1 points d'attaque ou les points de disponiblité ont dépassés.")
+        PAttakrepartir += guerrier.pointAttaque
+        continue // recommencer le boucle
+
+    // if (guerrier.pointDeVie >= 1)
+    //     console.log(`${guerrier.pointDeVie} du guerrier`)
+    //     break
+    // }
+    // if (guerrier.pointDeVie ) {
+    //     alert("Il manque des points à repartir au Guerrier. Reessayez")
+    //     PVrepartir += guerrier.pointDeVie
+    }
+
+    // ---attribuer au Mage
+    mage.pointAttaque = parseInt(prompt(`Repartir les points d'attaque à ${nomMage}, ${PAttakrepartir} restant`))
+    PAttakrepartir -= mage.pointAttaque
+    // vérification
+    if (mage.pointAttaque <= 0 || PAttakrepartir < 0) {
+        alert("Le mage doit au moins avoir 1 points d'attaque ou les points de disponiblité ont dépassés.")
+        PVrepartir += guerrier.pointAttaque + mage.pointAttaque
+        continue
+    }
+
+    // ---attribuer au Archer
+    archer.pointAttaque = parseInt(prompt(`Repartir les points d'attaque à ${nomArcher}, ${PAttakrepartir} restant`))
+    PAttakrepartir -= archer.pointAttaque
+    // vérification
+    if (archer.pointAttaque <= 0 || PAttakrepartir < 0) {
+        alert("L'archer doit au moins avoir 1 points d'attaque ou les points de disponiblité ont dépassés.")
+        PAttakrepartir += guerrier.pointAttaque + mage.pointAttaque + archer.pointAttaque
+        continue
+    }
 
 
-// let repartirStats = prompt()
+
+    // si tous les points ont été repartis
+    if (PAttakrepartir === 0) {
+        alert("Tous les points ont été repartis !")
+        break
+    }
+    else {
+        alert("Il manque des points à repartir !")
+        PAttakrepartir += guerrier.pointAttaque + mage.pointAttaque + archer.pointAttaque
+    }
+}
+
+
