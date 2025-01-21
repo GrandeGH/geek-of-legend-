@@ -36,9 +36,11 @@ class Archer extends Héros {
 }
 
 // Boss
-const Sauron = new Boss ("Sauron", 7, 300) 
-const Chronos = new Boss ("Chronos", 8, 350)
-const Lilit = new Boss ("Lilith", 9, 200)
+const Sauron = new Boss ("Sauron", 20, 400) 
+const Chronos = new Boss ("Chronos", 15, 350)
+const Lilith = new Boss ("Lilith", 25, 300)
+
+const listeBoss = [Sauron, Chronos, Lilith]
 
 //Héros
 const guerrier = new Guerrier ("Ardbert", 0, 0,["Attaque", "Defense"], "Guerrier", 0)
@@ -163,4 +165,7 @@ while (true) {
     }
 }
 
+// Boss aléatoire 
 
+let bossRandom = listeBoss[Math.floor(Math.random() * listeBoss.length)]
+alert(`Le boss que tu vas affronter est ${bossRandom.nom} !`)
